@@ -7,7 +7,8 @@ def reverseWords(self, s = str):
     word = [] # List of characters for a single word of the full string
     spaceIndex = 0 # Index of space immediately following word that has yet to be appended to final string
     wordIndex = 0 # Index of final character in the word that is being appended to final string
-    finalString = ""; # Final string to be returned at the end
+    finalString = "" # Final string to be returned at the end
+    firstWord = True # Variable that is set to true, as the firstWord is first, but is turned to false after the first word is added to the new string
 
 
 
@@ -35,6 +36,10 @@ def reverseWords(self, s = str):
             spaceIndex = charList.index(' ')
             # Sets the word which needs to be concatenated from its final letter to its first letter backwards (since currently all letters are in the list backwards)
             word = ''.join(charList[spaceIndex - 1:wordIndex:-1])
+            # Checks if this is the first word in the new string, if so then the final letter will be concatenated since it will be naturally deleted due to the nature of list splitting
+            if firstWord:
+                word += charList[0]
+                firstWord = False
             # Checks if word contains anything, it will not if there are multiple spaces
             if word:
                 # Sets the word index to be the final character of the word which was just concatenated, making it one less than the first character of the word which now requires concatenation
