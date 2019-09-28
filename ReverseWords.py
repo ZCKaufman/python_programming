@@ -35,6 +35,7 @@ def reverseWords(self, s = str):
             spaceIndex = charList.index(' ')
             # Sets the word which needs to be concatenated from its final letter to its first letter backwards (since currently all letters are in the list backwards)
             word = ''.join(charList[spaceIndex - 1:wordIndex:-1])
+            # Checks if word contains anything, it will not if there are multiple spaces
             if word:
                 # Sets the word index to be the final character of the word which was just concatenated, making it one less than the first character of the word which now requires concatenation
                 wordIndex = spaceIndex - 1;
@@ -42,6 +43,7 @@ def reverseWords(self, s = str):
                 finalString += " " + word
                 # Removes the first occuring space from charList to ensure that the word preceding the space will get concatenated
                 charList.remove(' ')
+            # Will remove an extra space if one is found
             else:
                 charList.remove(' ')
         except ValueError:
