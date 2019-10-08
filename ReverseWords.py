@@ -9,26 +9,35 @@ class MyString():
 
         # Erases beginning and ending spaces of s
         s = s.strip()
+        # Sets startIndex and endIndex to be at the end of the string
+        startIndex = len(s) - 1
+        endIndex = len(s) - 1
 
-        while endIndex <= len(s):
+        while startIndex >= -1:
+            while s[startIndex] != " ":
+                if(startIndex >= 0):
+                    startIndex -= 1
+                else:
+                    break
+            finalWord += s[startIndex + 1:endIndex + 1:1]
+            if startIndex >= 0:
+                finalWord += " "
+            endIndex = startIndex
             while s[endIndex] == " ":
-                endIndex += 1
-            finalWord += s[startIndex:endIndex:1]
-            startIndex = endIndex
-            while s[startIndex] == " ":
-                startIndex += 1
-            endIndex = startIndex + 1
-            print(finalWord)
+                endIndex -= 1
+            startIndex = endIndex - 1
 
-        print(finalWord)
         return finalWord
 
 myString = MyString()
 class TestReverseWords(unittest.TestCase):
 
     def test_MyString(self):
-        self.assertEquals(myString.reverseWords(" hello world! "), "world! hello")
-        #self.assertFalse(myString.isPalindrome("race a car"))
+        self.assertEqual(myString.reverseWords(" hello  world!  "), "world! hello")
+        self.assertEqual(myString.reverseWords("Zach   Christian Kaufman"), 'Kaufman Christian Zach')
+        self.assertEqual(myString.reverseWords("the sky is blue"), 'blue is sky the')
+        self.assertEqual(myString.reverseWords(" hello world! "), 'world! hello')
+        self.assertEqual(myString.reverseWords("a good example"), 'example good a')
 
 if __name__ == '__main__':
     unittest.main()
