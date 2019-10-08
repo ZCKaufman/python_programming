@@ -1,3 +1,5 @@
+import unittest
+
 class MyString:
     def isPalindrome(self, s: str) -> bool:
         mainString = ""
@@ -9,12 +11,18 @@ class MyString:
         mainString = mainString.lower()
 
         reverseString = mainString[::-1]
-        
+
         if mainString == reverseString:
             return True
         else:
             return False
 
-obj = MyString()
-obj.isPalindrome("A man, a plan, a canal: Panama")
-obj.isPalindrome("race a car")
+myString = MyString()
+class TestReverseWords(unittest.TestCase):
+
+    def test_MyString(self):
+        self.assertTrue(myString.isPalindrome("A man, a plan, a canal: Panama"))
+        self.assertFalse(myString.isPalindrome("race a car"))
+
+if __name__ == '__main__':
+    unittest.main()

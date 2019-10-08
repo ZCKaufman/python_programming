@@ -1,6 +1,6 @@
 import unittest
 # Function declaration with a string argument
-class ReverseWords():
+class MyString():
     def reverseWords(self, s: str) -> str:
         # Local Variable Declarations
         finalWord = ""
@@ -10,26 +10,25 @@ class ReverseWords():
         # Erases beginning and ending spaces of s
         s = s.strip()
 
-        while s[endIndex] != " " | s[endIndex] != len(s):
-            endIndex += 1
-        finalWord += s[startIndex:endIndex:1]
-        startIndex = endIndex
-        while s[startIndex] == " ":
-            startIndex += 1
+        while endIndex <= len(s):
+            while s[endIndex] == " ":
+                endIndex += 1
+            finalWord += s[startIndex:endIndex:1]
+            startIndex = endIndex
+            while s[startIndex] == " ":
+                startIndex += 1
+            endIndex = startIndex + 1
+            print(finalWord)
 
         print(finalWord)
         return finalWord
 
-obj = ReverseWords()
-obj.reverseWords("  Zach Kaufman   ")
+myString = MyString()
+class TestReverseWords(unittest.TestCase):
 
-#class TestReverseWords(unittest.TestCase):
+    def test_MyString(self):
+        self.assertEquals(myString.reverseWords(" hello world! "), "world! hello")
+        #self.assertFalse(myString.isPalindrome("race a car"))
 
-    #def test_reverseWords(self):
-        #self.assertEqual(reverseWords(reverseWords, "Zach   Christian Kaufman"), 'Kaufman Christian Zachary')
-        #self.assertEqual(reverseWords(reverseWords, "the sky is blue"), 'blue is sky the')
-        #self.assertEqual(reverseWords(reverseWords, " hello world! "), 'world! hello')
-        #self.assertEqual(reverseWords(reverseWords, "a good example"), 'example good a')
-
-#if __name__ == '__main__':
-    #unittest.main()
+if __name__ == '__main__':
+    unittest.main()
