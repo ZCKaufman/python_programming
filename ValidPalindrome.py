@@ -17,6 +17,11 @@ class MyString:
         else:
             return False
 
+# If the first half of mainString == the second half of reverseString then there is no need to check the second half so this
+# program can be improved
+
+# for i in range(len(mainString), 0, -1) this would go backwards through the String
+
 myString = MyString()
 class TestReverseWords(unittest.TestCase):
 
