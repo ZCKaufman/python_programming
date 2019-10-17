@@ -1,9 +1,9 @@
 import unittest
 
 class MyMatrix:
-        matrix = [[int]]
-        listNum = 0
-        listSize = 0
+    matrix = [[int]]
+    listNum = 0
+    listSize = 0
     def spiralOrder(self, matrix: [[int]]) -> [[int]]:
         finalList = []
         listNum = len(matrix) - 1
@@ -16,7 +16,7 @@ class MyMatrix:
 
         print(finalList)
 
-    def horizontalCount(start: int, end: int, )
+    #def horizontalCount(start: int, end: int, )
 
 # Testing
 obj = MyMatrix()

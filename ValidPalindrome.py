@@ -3,19 +3,22 @@ import unittest
 class MyString:
     def isPalindrome(self, s: str) -> bool:
         mainString = ""
-        reverseString = ""
+        startPoint = 0
+        endPoint = 0
 
         for i in s:
             if i.isalnum():
                 mainString += i
         mainString = mainString.lower()
+        endPoint = len(mainString) - 1
 
-        reverseString = mainString[::-1]
+        while(startPoint < endPoint):
+            if mainString[startPoint] != mainString[endPoint]:
+                return False
+            startPoint += 1
+            endPoint -= 1
 
-        if mainString == reverseString:
-            return True
-        else:
-            return False
+        return True
 
 # If the first half of mainString == the second half of reverseString then there is no need to check the second half so this
 # program can be improved
