@@ -6,17 +6,18 @@ class MyMatrix:
     listSize = 0
     def spiralOrder(self, matrix: [[int]]) -> [[int]]:
         finalList = []
-        listSize = len(matrix[0]) - 1
-        listNum = len(matrix) - 1
 
-        i = 0
-        while(i <= listSize):
-            j = 0
-            listNum = len(matrix) - 1
+        while(True):
             if(len(matrix) != 0):
+                # Local Variable Assignment
+                i = 0 # Horizontal Index
+                j = 0 # Vertical Index
+                listSize = len(matrix[0]) - 1
+                listNum = len(matrix) - 1
                 # First row
-                for k in range(len(matrix[0])):
-                    finalList.append(matrix[0][k])
+                while(i <= listSize):
+                    finalList.append(matrix[0][i])
+                    i += 1
                 matrix.remove(matrix[0])
                 # Last column
                 if(len(matrix) != 0):
