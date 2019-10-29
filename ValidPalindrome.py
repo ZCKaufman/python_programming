@@ -25,7 +25,8 @@ class MyString:
 
 # for i in range(len(mainString), 0, -1) this would go backwards through the String
 
-myString = MyString()
+### UNITTEST BELOW ###
+'''myString = MyString()
 class TestReverseWords(unittest.TestCase):
 
     def test_MyString(self):
@@ -33,4 +34,18 @@ class TestReverseWords(unittest.TestCase):
         self.assertFalse(myString.isPalindrome("race a car"))
 
 if __name__ == '__main__':
-    unittest.main()
+    unittest.main() '''
+
+### TAUGHT IN CLASS BELOW ###
+if __name__ == '__main__':
+    obj = MyString()
+    test1 = "A man, a plan, a canal: Panama"
+    test2 = "race a car"
+    if(obj.isPalindrome(test1)):
+        print("Test1: Pass. Expected value of True returned")
+    else:
+        print("Test1: Error. Expected value of True not returned")
+    if(not obj.isPalindrome(test2)):
+        print("Test2: Pass. Expected value of False returned")
+    else:
+        print("Test2: Error. Expected value of False not returned")
