@@ -34,8 +34,7 @@ class WordCount:
             top100.append(currentTopKey)
             dictionary.pop(currentTopKey)
             i += 1
-        print(top100)
-        #print("There are", length, "distinct words in the", fileName, "document. With the most used word being \"" + currentTopKey + "\" with", currentTop, "uses.")
-
+        print("There are " + str(length) + " distinct words in " + fileName + ". The top 100 most commonly used words (in order) are:", top100)
+        
 obj = WordCount()
 obj.countWords("shakespeares-complete.txt")
