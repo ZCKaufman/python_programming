@@ -15,24 +15,22 @@ class WordCount:
                             if(not char.isalnum()):
                                 word = word.replace(char, "")
                     word = word.lower()
-                    if(dictionary.get(word)):
+                    if(dictionary.get(word) and word != ""):
                         dictionary[word] += 1
-                    else:
+                    elif(word != ""):
                         dictionary[word] = 1
             f.close()
             fileOpen = False
-
         length = len(dictionary)
         top100 = []
         currentTop = 0
         currentTopKey = ""
         for key in dictionary:
-            print("HIT", key, dictionary[key])
-            if (int(dictionary[key]) > currentTop):
-                print("HIT2")
-                currentTop = int(dictionary[key])
+            #print(key)
+            if dictionary.get(key) > currentTop:
+                currentTop = dictionary.get(key)
                 currentTopKey = key
-        print("There are", length, "distinct words in the", fileName, "document. With the most used word being", currentTopKey)
+        print("There are", length, "distinct words in the", fileName, "document. With the most used word being \"" + currentTopKey + "\" with", currentTop, "uses.")
 
 obj = WordCount()
 obj.countWords("shakespeares-complete.txt")
