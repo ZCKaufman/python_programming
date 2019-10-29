@@ -18,17 +18,26 @@ class MyMatrix:
                 while(i <= listSize):
                     finalList.append(matrix[0][i])
                     i += 1
+                i -= 1
                 matrix.remove(matrix[0])
+                listNum -= 1
                 # Last column
-                if(len(matrix) != 0):
-                    listSize = len(matrix[0]) - 1
-                    j = 0
-                    while(j < listNum):
-                        finalList.append(matrix[j][listSize])
-                        matrix[j].remove(matrix[j][listSize])
-                        j += 1
+                while(j < listNum):
+                    finalList.append(matrix[j][listSize])
+                    matrix[j].remove(matrix[j][listSize])
+                    j += 1
+                #i -= 1
+                listSize -= 1
                 # Bottom row
-                if(len(matrix) != 0):
+                print(matrix, i, listSize, listNum)
+                while(i >= 0):
+                    print("HIT", matrix, finalList, listNum)
+                    finalList.append(matrix[listNum][i])
+                    matrix[listNum].remove(matrix[listNum][i])
+                    i -= 1
+                print("HIT2", matrix)
+                #matrix.remove(matrix[listNum])
+                '''if(len(matrix) != 0):
                     listNum = len(matrix) - 1
                     listSize = len(matrix[listNum]) - 1
                     j = listSize
@@ -36,7 +45,7 @@ class MyMatrix:
                         finalList.append(matrix[listNum][j])
                         matrix[listNum].remove(matrix[listNum][j])
                         j -= 1
-                    matrix.remove(matrix[listNum])
+                    matrix.remove(matrix[listNum]) '''
                 # First column
                 j = 0
                 i = listNum - 1
@@ -46,7 +55,6 @@ class MyMatrix:
                         finalList.append(matrix[i][0])
                         matrix[i].remove(matrix[i][0])
                         i -= 1
-                print(matrix, finalList)
             else:
                 print("----------ELSE-----------\n",finalList,"\n|||||||||||||||||||||")
                 return finalList
@@ -72,6 +80,12 @@ class TestReverseWords(unittest.TestCase):
 [11, 12, 13, 14, 15],
 [16, 17, 18, 19, 20]
 ]), [1,2,3,4,5,10,15,20,19,18,17,16,11,6,7,8,9,14,13,12])
+        self.assertEqual(obj.spiralOrder([
+[1, 2, 3],
+[10, 11, 4],
+[9, 12, 5],
+[8, 7, 6]
+]), [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
 
 if __name__ == '__main__':
     unittest.main()
