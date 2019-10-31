@@ -4,12 +4,14 @@ class WordCount:
     def countWords(self, fileName: str):
         f = open(fileName, "r")
         i = 0
+        words = 0
         top100 = []
         dictionary = {}
         fileOpen = True
         while(fileOpen):
             for line in f:
                 for word in line.split(" "):
+                    words += 1
                     if (not word.isalnum()):
                         for char in word:
                             if(not char.isalnum()):
@@ -21,7 +23,6 @@ class WordCount:
                         dictionary[word] = 1
             f.close()
             fileOpen = False
-        #print(dictionary["driving"])
         length = len(dictionary)
         i = 0
         while(i < 100):
@@ -34,7 +35,9 @@ class WordCount:
             top100.append(currentTopKey)
             dictionary.pop(currentTopKey)
             i += 1
-        print("There are " + str(length) + " distinct words in " + fileName + ". The top 100 most commonly used words (in order) are:", top100)
-        
+        print("There are " + str(length) + " distinct words in " + fileName + ", and " + str(words) + " total words. The top 100 most commonly used words (in order) are:", top100)
+
 obj = WordCount()
 obj.countWords("shakespeares-complete.txt")
+obj.countWords("illiad.txt")
+obj.countWords("bible.txt")
