@@ -1,14 +1,14 @@
 import math
 
 class SquareRoot():
-    def sqrt(self, num):
+    def sqrt(self, num) -> float:
         num = num
         x0 = (1/2)*(num + 1.0)
         i = 0
         while(i <= 5):
             x0 = (1/2)*(x0 + (num/x0))
             i += 1
-        print(x0)
+        return x0
 
 obj = SquareRoot()
 obj.sqrt(4)
