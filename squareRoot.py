@@ -2,7 +2,6 @@ import math
 
 class SquareRoot():
     def sqrt(self, num) -> float:
-        num = num
         x0 = (1/2)*(num + 1.0)
         i = 0
         while(i <= 5):
