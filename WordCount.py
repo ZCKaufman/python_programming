@@ -24,18 +24,23 @@ class WordCount:
             f.close()
             fileOpen = False
         length = len(dictionary)
-        i = 0
-        while(i < 100):
-            currentTop = 0
-            currentTopKey = ""
-            for key in dictionary:
-                if dictionary.get(key) > currentTop:
-                    currentTop = dictionary.get(key)
-                    currentTopKey = key
-            top100.append(currentTopKey)
-            dictionary.pop(currentTopKey)
-            i += 1
+        top100 = sort(dictionary, 100)
+        sorted_wc = sorted(dictionary, key=dictionary.get, reverse=True)
         print("There are " + str(length) + " distinct words in " + fileName + ", and " + str(words) + " total words. The top 100 most commonly used words (in order) are:", top100)
+def sort(dictionary: dict, size: int) -> list:
+    i = 0
+    topList = []
+    while(i < size):
+        currentTop = 0
+        currentTopKey = ""
+        for key in dictionary:
+            if dictionary.get(key) > currentTop:
+                currentTop = dictionary.get(key)
+                currentTopKey = key
+        topList.append(currentTopKey)
+        dictionary.pop(currentTopKey)
+        i += 1
+    return topList
 
 obj = WordCount()
 obj.countWords("shakespeares-complete.txt")
