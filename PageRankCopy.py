@@ -1,12 +1,13 @@
 '''
 This is an attempt to recreate the "Trillion Dollar Algorithm" known as PageRank using Python.
 '''
+import sys
 class Node():
     # CONSTRUCTORS
-    def __init__(self, name, edges = []):
+    def __init__(self, name, edges = [], pr = 0.0):
         self.page = name
         self.links = edges
-        self.page_rank = 0
+        self.page_rank = pr
 
     # GET FUNCTIONS
     def get_name(self):
@@ -33,7 +34,7 @@ class Node():
         print("Page: " + self.page)
         print("Links: {")
         for l in self.links:
-            print("\t" + l.to_string())
+            print("\t" + l.get_name())
 
 class Graph():
     nodes = []
@@ -51,6 +52,7 @@ class Graph():
                 node2 = page
         if(node1 and node2):
             node1.add_link(node2)
+
     def get_nodes(self):
         return self.nodes
 
@@ -76,12 +78,16 @@ def page_rank(g: Graph):
 
         s = 0.0
         for node in nodes:
+            g.to_string()
             if(node.get_num_links == 0):
                 s += float((d * node.get_pr()) / size)
 
         for n in nodes:
             for link in node.get_links():
-                map[link] = float(n.get_pr() / n.get_num_links())
+                try:
+                    map[link] = map.get(link) + float(n.get_pr() / n.get_num_links())
+                except:
+                    map[link] = float(n.get_pr() / n.get_num_links())
 
         convergence = True
         for node in nodes:
